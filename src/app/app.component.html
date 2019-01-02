@@ -1,3 +1,4 @@
+<!-- <app-modal></app-modal> -->
 <div class="body">
   <h1>The Slider of the Century!</h1>
   <div class="slider-container">
@@ -15,19 +16,20 @@
       <span>30,000</span>
       <span>50,000</span>
     </div>
-    <input type="range" class="slider top" min="0" max="10" value="1" #left (change)="logLeft(left)">
-    <input type="range" class="slider bottom" min="0" max="10" value="8" #right (change)="logRight(right)">
+    <input type="range" class="slider top" min="0" max="10" value="4" #left (input)="logLeft($event.target)">
+    <input type="range" class="slider bottom" min="0" max="10" #right value="6" (input)="logRight(right)">
   </div>
-  <table class="transaction-container">
+  <table class="transaction-container" *ngIf="isLoaded">
     <tr>
       <th style="margin-right: 30px;">Company</th>
       <th>Date</th>
       <th>Amount</th>
     </tr>
     <tr *ngFor="let data of transactionsFiltered">
-      <th>{{ data.company }}</th>
-      <th>{{ data.date }}</th>
-      <th>{{ data.amount }}</th>
+      <th>{{ data?.company }}</th>
+      <th>{{ data?.date }}</th>
+      <th>{{ data?.amount }}</th>
     </tr>
   </table>
+  <app-loader *ngIf="!isLoaded"></app-loader>
 </div>

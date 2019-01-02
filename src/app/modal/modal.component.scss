@@ -1,0 +1,16 @@
+.body {
+    margin-top: 0;
+    position: fixed;
+    min-height: 30%;
+    min-width: 80%;
+    background-color: rgba(60,60,60,.9);
+    z-index: 5;
+    text-shadow: 1px 2px 4px white;
+    font-size: 28px;
+
+    .modal-container {
+        margin: 0 auto;
+        width: 50%;
+        text-align: center;
+    }
+}

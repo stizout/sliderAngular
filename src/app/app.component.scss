@@ -1,44 +1,40 @@
+@mixin track() {
+    background: purple;
+    min-height: 10px;
+}
+
 .slider {
-    width: 800px;
+    width: 1050px;
     height: 30px;
     overflow: hidden;
     cursor: pointer;
 }
 
-// .slider.slider::-webkit-slider-runnable-track.slider::-webkit-slider-thumb {
-//     -webkit-appearance: none;
-//     background: none;
-// }
 
 .slider::-webkit-slider-runnable-track {
-    width: 800px;
+    width: 900px;
     height: 1px;
+    // background-color: purple;
 }
 
-// .slider:nth-child(2)::-webkit-slider-runnable-track {
-//     background: none;
-// }
 
-.slider::-webkit-slider-thumb {
+.slider-container .slider::-webkit-slider-thumb {
     position: relative;
-    height: 15px;
-    width: 15px;
-    margin-top: -7px;
-    border: 1px solid black;
-    border-radius: 50%;
+    background-color: green;
+    color: green;
+    // height: 15px;
+    // width: 15px;
+    margin-top: -3px;
+    // border-radius: 50%;
     z-index: 1;
 }
 
-// .slider:nth-child(1)::-webkit-slider-thumb {
-//     background: green;
-// }
-
 .slider-container {
     position: relative;
-    height: 60px;
-    width: 800px;
-    display: inline-block;
-    margin-top: -5px;
+    // height: 60px;
+    width: 900px;
+    // display: inline-block;
+    // margin-top: -5px;
     margin-left: 20px;
     
 
@@ -49,51 +45,49 @@
 
 .value-bar {
     display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 10px;
+
     span:nth-child(1) {
-        position: fixed;
-        left: 33px;
+        margin-left: 5px;
+        font-size: 28px;
     }
     span:nth-child(2) {
-        position: fixed;
-        left: 108px;
+        margin: 0 79px;
+        font-size: 28px;
     }
     span:nth-child(3) {
-        position: fixed;
-        left: 179px;
+        margin-left: -10px;
+        font-size: 28px;
     }
     span:nth-child(4) {
-        position: fixed;
-        left: 260px;
+        margin: 0 55px;
+        font-size: 28px;
     }
     span:nth-child(5) {
-        position: fixed;
-        left: 333px;
+        margin-left: -10px;
+        font-size: 28px;
     }
     span:nth-child(6) {
-        position: fixed;
-        left: 411px;
+        margin: 0 48px;
+        font-size: 28px;
     }
     span:nth-child(7) {
-        position: fixed;
-        left: 490px;
+        margin-left: -8px;
+        font-size: 28px;
     }
     span:nth-child(8) {
-        position: fixed;
-        left: 570px;
+        margin: 0 42px;
+        font-size: 28px;
     }
     span:nth-child(9) {
-        position: fixed;
-        left: 642px;
+        margin-left: -5px;
+        font-size: 28px;
     }
     span:nth-child(10) {
-        position: fixed;
-        left: 725px;
+        margin: 0 38px;
+        font-size: 28px;
     }
     span:nth-child(11) {
-        position: fixed;
-        left: 800px;
+        font-size: 28px;
     }
 }
 .transaction-container {
@@ -106,4 +100,9 @@ table {
 
 .body {
     width: 800px;
+}
+
+input {
+    &::-webkit-slider-runnable-track { @include track }
+
 }

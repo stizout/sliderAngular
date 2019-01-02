@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,8 @@ export class TransactionsService {
   constructor() { }
 
   getTransactions() {
-    return transactions;
-  }
-
+    return transactions
+}
 }
 
 
