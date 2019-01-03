@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from './transactions.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { TransactionsService } from './transactions.service';
 })
 export class AppComponent implements OnInit {
   constructor(private transactionService: TransactionsService) {}
-  transactions;
-  @ViewChild('left') private alex: ElementRef
+  transactions: Array<any> = [];
   isLoaded: boolean = false;
+  showOffers: boolean = false;
   transactionsFiltered: Array<any> = [];
   sliderLeft: number = 4;
   controlLeft: string = 'min'
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   values: Array<any> = [0, 50, 100, 250, 1000, 2000, 3500, 5000, 10000, 30000, 50000];
   min: number = this.values[this.sliderLeft];
   max: number = this.values[this.sliderRight];
+  searchInput: string = '';
 
 
   ngOnInit() {
@@ -27,9 +29,9 @@ export class AppComponent implements OnInit {
       this.transactions = this.transactionService.getTransactions()
       this.transactionsFiltered = this.transactions;
       this.isLoaded = true;
+      console.log(this.transactions)
     }, 2000)
 
-    console.log(this.alex)
   }
 
   logRight(x) {
@@ -71,6 +73,15 @@ export class AppComponent implements OnInit {
     if(!this.dirty) {
       this.dirty = true;
     }
+  }
+
+  handleSearch(x){
+    console.log(x.value.toLowerCase())
+    this.transactionsFiltered = this.transactions.filter((t) => t.company.toLowerCase().indexOf(x.value.toLowerCase()) !== -1)
+  }
+
+  handleShowOffers() {
+    this.showOffers = !this.showOffers
   }
 }
 

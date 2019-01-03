@@ -19,17 +19,37 @@
     <input type="range" class="slider top" min="0" max="10" value="4" #left (input)="logLeft($event.target)">
     <input type="range" class="slider bottom" min="0" max="10" #right value="6" (input)="logRight(right)">
   </div>
-  <table class="transaction-container" *ngIf="isLoaded">
-    <tr>
-      <th style="margin-right: 30px;">Company</th>
-      <th>Date</th>
-      <th>Amount</th>
-    </tr>
-    <tr *ngFor="let data of transactionsFiltered">
-      <th>{{ data?.company }}</th>
-      <th>{{ data?.date }}</th>
-      <th>{{ data?.amount }}</th>
-    </tr>
-  </table>
+  <form class="filter-field" #searchField="ngForm" cl>
+    <label style="margin-right: 10px;">Search</label>
+    <input 
+      type="search"
+      class="form-control"
+      [value]="searchInput"
+      [(ngModel)]="searchInput"
+      ngModel
+      #search="ngModel"
+      name="search"
+      (input)="handleSearch(search)">
+  </form>
+  <div class="table-container">
+    <table class="transaction-container" *ngIf="isLoaded">
+      <tr>
+        <th style="margin-right: 30px;">Company</th>
+        <th>Date</th>
+        <th>Amount</th>
+      </tr>
+      <tr *ngFor="let data of transactionsFiltered">
+        <th>{{ data?.company }}</th>
+        <th>{{ data?.date }}</th>
+        <th>{{ data?.amount }}</th>
+      </tr>
+    </table>
+  </div>
   <app-loader *ngIf="!isLoaded"></app-loader>
 </div>
+
+<!-- <pie-chart></pie-chart> -->
+<button (click)="handleShowOffers()" *ngIf="!showOffers" class="btn btn-primary">Show Offers</button>
+<button (click)="handleShowOffers()" *ngIf="showOffers" class="btn btn-primary">Hide Offers</button>
+  <offers *ngIf="showOffers"></offers>
+

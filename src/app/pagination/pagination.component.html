@@ -1,0 +1,6 @@
+
+<div class="pagination">
+  <button (click)="goPrevious()" class="btn btn-primary" [disabled]="currentPage === 1">Previous</button>
+  <p>current page</p>
+  <button (click)="goToNext()" [disabled]="currentPage === totalPages" class="btn btn-primary">Next</button>
+</div>

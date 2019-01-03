@@ -1,5 +1,4 @@
 @mixin track() {
-    background: purple;
     min-height: 10px;
 }
 
@@ -90,12 +89,22 @@
         font-size: 28px;
     }
 }
-.transaction-container {
+.table-container {
     width: 800px;
+    min-height: 300px;
+}
+.transaction-container {
+    width: 900px;
+    margin: 10px auto;
+}
+
+
+.filter-field {
+    margin: 40px 0 0px 20px;
 }
 table {
     width: 50%;
-    margin: 80px auto;
+    margin: 0px auto;
 }
 
 .body {

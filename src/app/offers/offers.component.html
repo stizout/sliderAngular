@@ -1,0 +1,24 @@
+<div *ngIf="isLoaded" style="display: flex; flex-direction: column; align-items: center; width: 800px; min-height: 800px;">
+  <div style="display: flex; margin-bottom: 10px;">
+    Offers per page:
+    <select (change)="updateLimit(selectLimit)" #selectLimit>
+      <option>---</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+  </div>
+  <div *ngFor="let offer of offersToShow"  class="offer-container">
+    <img src="{{ offer.image }}" alt="logo" style="height: 40px;">
+    <p>{{  offer.company }}</p>
+    <p>{{  offer.offer }}</p>
+  </div>
+  <pagination
+    (goPrev)="goPrev($event)"
+    (goNext)="goNext($event)"
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [currentPage]="currentPage">
+  </pagination>
+</div>
+<app-loader *ngIf="!isLoaded"></app-loader>
